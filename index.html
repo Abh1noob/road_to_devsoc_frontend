@@ -60,61 +60,6 @@
             margin-top: 20px;
         }
     </style>
-    <script>
-        function init() {
-            const timeBox = document.getElementById("currentTime")
-            const dateBox = document.getElementById("currentDate")
-            const dayBox = document.getElementById("currentDay")
-
-            setInterval(() => {
-                const date = new Date()
-
-                const timeData = date.toString().slice(16, 24)
-                timeBox.innerHTML = timeData
-
-                const dateData = date.toString().slice(8, 10) + "-" + date.toString().slice(4, 7) + "-" +
-                    date.toString().slice(11, 15)
-                dateBox.innerHTML = dateData
-
-                // const dayData = date.getDay(); { Not sure if daydata will start from 0. Need to check
-                let dayData = date.toString().slice(0, 3)
-
-                // Fancy Feature
-                switch (dayData) {
-                    case "Sun":
-                        dayData = "Sunday"
-                        break;
-                    case "Mon":
-                        dayData = "Monday"
-                        break;
-                    case "Tue":
-                        dayData = "Tuesday"
-                        break;
-                    case "Wed":
-                        dayData = "Wednesday"
-                        break;
-
-                    case "Thu":
-                        dayData = "Thursday"
-                        break;
-                    case "Fri":
-                        dayData = "Friday"
-                        break;
-                    case "Sat":
-                        dayData = "Saturday"
-                        break;
-                    default:
-                        dayData = "Something went wrong"
-                        break;
-                }
-                dayBox.innerHTML = dayData
-
-            }, 1000)
-        }
-
-        window.onload = init
-
-    </script>
 </head>
 
 <body>
