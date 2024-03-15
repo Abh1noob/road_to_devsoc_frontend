@@ -1,0 +1,136 @@
+<html>
+
+<head>
+    <title>Clock | Assessment</title>
+    <style>
+        #root {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        fieldset {
+            height: auto;
+            width: 20vw;
+        }
+
+        body {
+            background-color: #0e0e0e;
+            overflow: hidden;
+            font-size: 22px;
+            color: white;
+        }
+
+        legend {
+            background-color: orange;
+            padding: 5px;
+        }
+
+        legend:hover {
+            scale: 1.05
+        }
+
+        #container {
+            padding: 20px;
+        }
+
+        #currentTime {
+            font-size: 100px;
+        }
+
+        #currentTime:hover {
+            color: red;
+        }
+
+        #currentdate:hover {
+            color: red;
+        }
+
+        #currentDay:hover {
+            color: red;
+        }
+
+        #details {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function init() {
+            const timeBox = document.getElementById("currentTime")
+            const dateBox = document.getElementById("currentDate")
+            const dayBox = document.getElementById("currentDay")
+
+            setInterval(() => {
+                const date = new Date()
+
+                const timeData = date.toString().slice(16, 24)
+                timeBox.innerHTML = timeData
+
+                const dateData = date.toString().slice(8, 10) + "-" + date.toString().slice(4, 7) + "-" +
+                    date.toString().slice(11, 15)
+                dateBox.innerHTML = dateData
+
+                // const dayData = date.getDay(); { Not sure if daydata will start from 0. Need to check
+                let dayData = date.toString().slice(0, 3)
+
+                // Fancy Feature
+                switch (dayData) {
+                    case "Sun":
+                        dayData = "Sunday"
+                        break;
+                    case "Mon":
+                        dayData = "Monday"
+                        break;
+                    case "Tue":
+                        dayData = "Tuesday"
+                        break;
+                    case "Wed":
+                        dayData = "Wednesday"
+                        break;
+
+                    case "Thu":
+                        dayData = "Thursday"
+                        break;
+                    case "Fri":
+                        dayData = "Friday"
+                        break;
+                    case "Sat":
+                        dayData = "Saturday"
+                        break;
+                    default:
+                        dayData = "Something went wrong"
+                        break;
+                }
+                dayBox.innerHTML = dayData
+
+            }, 1000)
+        }
+
+        window.onload = init
+
+    </script>
+</head>
+
+<body>
+    <div id="root">
+        <fieldset>
+            <legend>Clock</legend>
+            <div id="container">
+                <div name="time" id="currentTime"></div>
+                <div id="details">
+                    <div>Day: <a id="currentDay"></a></div>
+                    <div>Date: <a id="currentDate"></a></div>
+                </div>
+            </div>
+            Abhinav Ganeshan
+        </fieldset>
+    </div>
+</body>
+
+</html>
